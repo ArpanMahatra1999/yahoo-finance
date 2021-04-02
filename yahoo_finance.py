@@ -1,9 +1,20 @@
 import yfinance as yf
 
 
+def stock_available(symbol):
+    ticker = yf.Ticker(symbol)
+    stockInfo = ticker.info
+
+    if len(stockInfo) > 1:
+        return True
+    else:
+        return False
+
+
 def yahoo_finance_summary(symbol):
     ticker = yf.Ticker(symbol)
     stockInfo = ticker.info
+
     summary = {
         'zip': stockInfo['zip'],
         'phone': stockInfo['phone'],
@@ -160,4 +171,4 @@ def yahoo_finance_company(symbol):
     }
     return company
 
-print(yahoo_finance_company('MSFT'))
+print(stock_available('divash'))
